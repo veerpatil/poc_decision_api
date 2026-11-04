@@ -1,0 +1,50 @@
+{
+  "version": "v1",
+  "questions": [
+    {
+      "type": "choice",
+      "name": "department",
+      "instructions": "Which team should handle this support message? Use only observable cues in the text. Do not invent account facts.",
+      "choices": [
+        { "value": "billing" },
+        { "value": "technical" },
+        { "value": "shipping" },
+        { "value": "other" }
+      ]
+    },
+    {
+      "type": "predicate",
+      "name": "duplicate_charge",
+      "instructions": "Does the message describe being charged twice for the same purchase or duplicate billing?"
+    },
+    {
+      "type": "predicate",
+      "name": "escalate_now",
+      "instructions": "Should a human agent take over immediately (legal threat, repeated failed bot help, or explicit demand for a person)?"
+    },
+    {
+      "type": "predicate",
+      "name": "refund_tool_safe",
+      "instructions": "Is it reasonable to allow an automated refund tool now (clear duplicate charge or obvious billing error stated in the message)?"
+    },
+    {
+      "type": "score",
+      "name": "urgency",
+      "instructions": "How urgent is this issue for the customer?",
+      "levels": [
+        {
+          "label": "Low",
+          "description": "Minor inconvenience; workaround exists or cosmetic issue."
+        },
+        {
+          "label": "Medium",
+          "description": "Important task impaired but partial workaround exists."
+        },
+        {
+          "label": "High",
+          "description": "Critical task blocked with no workaround."
+        }
+      ]
+    }
+  ]
+}
