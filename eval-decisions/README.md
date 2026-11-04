@@ -70,3 +70,24 @@ The hosted [Evals](https://developers.openai.com/api/docs/guides/evals) product 
 - [Decisions guide](https://developers.openai.com/api/docs/guides/decisions)
 - [Create decision API reference](https://developers.openai.com/api/reference/resources/decisions/methods/create)
 - [Decisions API announcement](https://openai.com/index/decisions-api)
+
+## Sample code
+
+Runnable examples live under [`scripts/`](scripts/README.md) and [`examples/`](examples/).
+
+```bash
+cd eval-decisions
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/decide_once.py --dry-run
+python scripts/decide_once.py   # requires OPENAI_API_KEY
+```
+
+| Path | Purpose |
+|------|---------|
+| `scripts/decide_once.py` | Single `choice` call |
+| `scripts/decide_multi_question.py` | `choice` + `predicate` + `score` |
+| `scripts/run_eval.py` | JSONL batch runner |
+| `scripts/compute_metrics.py` | Accuracy / F1 / calibration |
+| `examples/decide_once.sh` | curl sample |
+| `examples/decide_once.ts` | TypeScript SDK sample |
